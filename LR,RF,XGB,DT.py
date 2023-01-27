@@ -76,7 +76,7 @@ Heart_Fail1.head()
 
 #Visualization
 #Visualizing categorical Features
-
+#--------------------
 fig = make_subplots(
     rows=3, cols=2, subplot_titles=('<b>Distribution Of Anemia<b>','<b>Distribution Of Diabetes<b>','<b>Distribution Of High blood Pressure<b>',
                                    '<b>Distribution Of Sex<b>','<b>Distribution Of Smoking Status<b>', '<b>Distribution Of Death Event<b>'),
@@ -133,9 +133,9 @@ fig.update_layout(
 )
 
 fig.show()
+#---------------------------
 
-
-
+#----------------------------
 def cat_count(ddf, col):
     ddf = ddf.groupby([col, "DEATH_EVENT"])["DEATH_EVENT"].count().reset_index(level = 0)
     ddf.columns = [col, "count"]
@@ -157,19 +157,16 @@ for ix, i in enumerate(["anaemia", "diabetes"]):
     sns.barplot(xx[i], xx["count"], hue = xx["DEATH_EVENT"], palette = "BuPu", ax = axes[ix]);
 
 
+#-------------------------
 
 #Visualizing Numerical Features
-
-
-
 Heart_Fail1[numerical_features].iplot(kind='histogram', subplots=True,bins=50, colors=['#27296d','#5e63b6','#a393eb','#f5c7f7'],dimensions =(1200,1000))
 
-
-
+#----------------------
 for i in numerical_features:
     Heart_Fail1[i].iplot(kind="box", title=i, boxpoints="all", color='#a393eb', dimensions=(600,600))
 
-
+#---------------------------
 index = 0
 plt.figure(figsize=(20,20))
 for feature in numerical_features:
@@ -178,12 +175,11 @@ for feature in numerical_features:
         plt.subplot(4, 3, index)
         sns.boxplot(x='DEATH_EVENT', y=feature, data=Heart_Fail1, palette='BuPu')
 
-
+#----------------------
 sns.pairplot(Heart_Fail1, hue="DEATH_EVENT", palette="inferno", corner=True);
 
 #Outlier Detection
-
-
+#--------------------
 def detect_outliers(Heart_Fail,features):
     outlier_indices = []
     
@@ -198,11 +194,11 @@ def detect_outliers(Heart_Fail,features):
     multiple_outliers = list(i for i, v in outlier_indices.items() if v > 1) 
     
     return multiple_outliers
-
+#----------------------
 
 Heart_Fail1.loc[detect_outliers(Heart_Fail1,["age","creatinine_phosphokinase","ejection_fraction","platelets","serum_creatinine","serum_sodium","time"])]
 
-
+#---------------
 Heart_Fail1 = Heart_Fail1.drop(detect_outliers(Heart_Fail1,["age","creatinine_phosphokinase","ejection_fraction","platelets","serum_creatinine","serum_sodium","time"]),axis = 0).reset_index(drop=True)
 Heart_Fail1
 
@@ -377,10 +373,10 @@ ac = accuracy_score(y_test, y_pred)
 mylist.append(ac)
 print(cm)
 print(ac)
-
+#--------------------------
 model_list = ['Logistic Regression', 'KNearestNeighbours', 'DecisionTree', 'RandomForest',
                'XGBoost']
-
+#----------------------------
 plt.rcParams['figure.figsize']=10,4 
 sns.set_style('darkgrid')
 ax = sns.barplot(x=model_list, y=mylist, palette = "BuPu", saturation =2.0)
