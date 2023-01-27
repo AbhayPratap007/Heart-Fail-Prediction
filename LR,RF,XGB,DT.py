@@ -210,7 +210,7 @@ Heart_Fail1
 #Correlation Matrix
 
 corr_matrix = Heart_Fail1.corr()
-sns.clustermap(corr_matrix, annot = True, fmt = ".2f")
+sns.clustermap(corr_matrix, annot = True, fmt = ".2f") #the argument annot = True is usually passed in the sns.heatmap() function to display the correlation coefficient to facilitate easier interpretation of the heatmap.
 plt.title("Correlaation between features")
 plt.show()
 
