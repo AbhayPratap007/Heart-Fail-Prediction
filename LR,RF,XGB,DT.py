@@ -274,7 +274,6 @@ for nb in range(3,10):
 plt.plot(list(range(3,10)), list1)
 plt.show()
 
-
 # Training the K Nearest Neighbor Classifier on the Training set
 
 classifier = KNeighborsClassifier(n_neighbors=5)
@@ -344,10 +343,7 @@ mylist.append(ac)
 print(cm)
 print(ac)
 
-
 #pip install xgboost
-
-
 
 from xgboost import XGBClassifier
 from sklearn.metrics import confusion_matrix, accuracy_score
@@ -390,4 +386,3 @@ for i in ax.patches:
     x, y = i.get_xy() 
     ax.annotate(f'{round(height,2)}%', (x + width/2, y + height*1.02), ha='center', fontsize = 'x-large')
 plt.show()
-
