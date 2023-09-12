@@ -12,7 +12,6 @@ from sklearn.model_selection import RandomizedSearchCV
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score,recall_score,precision_score,f1_score
 
-
 #read data
 
 Heart_Fail=pd.read_csv('D:/Chanchal/heart_failure.csv')
@@ -66,7 +65,6 @@ sns.histplot(Heart_Fail.time)
 
 sns.countplot(Heart_Fail.DEATH_EVENT)
 
-
 #It computes the pairwise correlation of columns, excluding NA/null values
 
 Heart_Fail.corr()
@@ -115,4 +113,3 @@ print("Recall Score:",recall_score(y_test,y_pred)*100,"%")
 print("Precision Score:",precision_score(y_test,y_pred)*100,"%")
 print("F1 Score:",f1_score(y_test,y_pred)*100,"%")
 pd.crosstab(y_pred,y_test)
-
