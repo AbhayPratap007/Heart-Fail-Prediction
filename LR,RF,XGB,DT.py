@@ -123,7 +123,6 @@ fig.add_trace(
     row=3, col=2
 ) 
 
- 
     
 fig.update_layout(
     height=1200,
@@ -201,7 +200,6 @@ Heart_Fail1.loc[detect_outliers(Heart_Fail1,["age","creatinine_phosphokinase","e
 Heart_Fail1 = Heart_Fail1.drop(detect_outliers(Heart_Fail1,["age","creatinine_phosphokinase","ejection_fraction","platelets","serum_creatinine","serum_sodium","time"]),axis = 0).reset_index(drop=True)
 Heart_Fail1
 
-
 #Correlation Matrix
 
 corr_matrix = Heart_Fail1.corr()
@@ -228,12 +226,10 @@ Heart_Fail1['platelets'] = ss.fit_transform(Heart_Fail1[['platelets']])
 Heart_Fail1['serum_sodium'] = ss.fit_transform(Heart_Fail1[['serum_sodium']])
 Heart_Fail1.head()
 
-
 #Data Spliting
 
 x = Heart_Fail1.iloc[:, [4,7,11]].values
 y = Heart_Fail1.iloc[:,-1].values
-
 
 #train Test Split
 
